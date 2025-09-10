@@ -22,7 +22,7 @@ import { PixelProgress } from '../components/ui/PixelProgress';
 import { useUserStore } from '../stores/userStore';
 import { useStudyStore } from '../stores/studyStore';
 import { useTestStore } from '../stores/testStore';
-import { storageManager } from '../utils/storage';
+import { storage } from '../utils/storage';
 import { audioManager } from '../utils/audioService';
 
 interface Settings {
@@ -126,9 +126,9 @@ export const SettingsPage: React.FC = () => {
       // Validate imported data
       if (data.user && data.studyHistory && data.testHistory) {
         // Import data
-        await storageManager.saveUserData(data.user);
-        await storageManager.saveStudyHistory(data.studyHistory);
-        await storageManager.saveTestHistory(data.testHistory);
+        await storage.saveUserData(data.user);
+        await storage.saveStudyHistory(data.studyHistory);
+        await storage.saveTestHistory(data.testHistory);
         
         // Update stores
         updateUser(data.user);
@@ -150,7 +150,7 @@ export const SettingsPage: React.FC = () => {
     setIsResetting(true);
     try {
       // Clear all data
-      await storageManager.clearAllData();
+      await storage.clearAllData();
       localStorage.clear();
       
       // Reset user

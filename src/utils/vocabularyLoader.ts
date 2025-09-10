@@ -42,7 +42,7 @@ export class VocabularyLoader {
     }
   }
 
-  private buildSearchIndex(): void> {
+  private buildSearchIndex(): void {
     this.searchIndex.clear();
     
     const allWords = Array.from(this.cache.values()).flat();
@@ -82,7 +82,7 @@ export class VocabularyLoader {
     });
   }
 
-  private addToIndex(term: string, wordId: string): void> {
+  private addToIndex(term: string, wordId: string): void {
     if (!this.searchIndex.has(term)) {
       this.searchIndex.set(term, new Set());
     }
